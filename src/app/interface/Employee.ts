@@ -7,4 +7,4 @@ export interface Employee {
     jobPosition: string;
     phone: string;
     imageUrl: string;
-}
+} 
