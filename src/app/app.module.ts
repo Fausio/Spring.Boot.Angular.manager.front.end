@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';  
 import {EmployeeComponent} from './component/employee/employee.component'
 
@@ -9,9 +10,10 @@ import {EmployeeComponent} from './component/employee/employee.component'
     EmployeeComponent
   ],
   imports: [
+    RouterModule,
     BrowserModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent,EmployeeComponent]
 })
 export class AppModule { }
