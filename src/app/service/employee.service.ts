@@ -1,20 +1,33 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { Employee } from '../interface/Employee';
 
 
 @Injectable({
     providedIn: 'root'
 })
 
-export class EmployeeService{
+export class EmployeeService {
 
     private backEndServerUrl = 'localhost:8080';
 
-    constructor(private http: HttpClient){}
+    constructor(private http: HttpClient) { }
 
-    public Read(): Observable<any>{
-        return this.http.get<any>(`${this.backEndServerUrl}/employee/read`)
+    public Read(): Observable<Employee[]> {
+        return this.http.get<Employee[]>(`${this.backEndServerUrl}/employee/read`)
     }
+    public ReadById(id: number): Observable<Employee> {
+        return this.http.get<Employee>(`${this.backEndServerUrl}/employee/read/` + id)
+    }
+    public Create(model: Employee): Observable<Employee> {
+        return this.http.post<Employee>(`${this.backEndServerUrl}/employee/create`, model)
+    }
+    public Update(model: Employee): Observable<Employee> {
+        return this.http.put<Employee>(`${this.backEndServerUrl}/employee/update`, model)
+    }
+    public Delete(id: number): Observable<Employee> {
+        return this.http.delete<Employee>(`${this.backEndServerUrl}/employee/delete/` + id)
+    }
+
 }
