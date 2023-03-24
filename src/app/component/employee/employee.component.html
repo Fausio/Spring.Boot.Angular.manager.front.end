@@ -1,0 +1,18 @@
+<p>employee works!</p>
+
+
+<table border="1">
+    <tr>
+        <th>Nome</th>
+        <th>Email</th>
+    </tr>
+   
+    <tr *ngFor="let employe of employees; let i = index">
+        <td>{{employe.name}}</td>
+        <td><a href="{{'mailto:'+employe.email}}" > {{employe.email}}</a> <br></td>
+    </tr>
+    
+
+</table>
+
+ 
