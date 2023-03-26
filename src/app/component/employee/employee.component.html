@@ -81,40 +81,39 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          <form>
+        <form #addEmployeeModal="ngForm" (ngSubmit)="OnCreate(addEmployeeModal)">
+          <div class="modal-body">
+
             <div class="form-row">
               <div class="form-group col-md-6">
-                <label for="inputEmail4">Name</label>
-                <input type="text" class="form-control" id="inputEmail4" placeholder="Name">
+                <label>Name</label>
+                <input required ngModel name="name" type="text" class="form-control" placeholder="Name">
               </div>
               <div class="form-group col-md-6">
-                <label for="inputEmail4">Email</label>
-                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                <label>Email</label>
+                <input required ngModel name="email" type="email" class="form-control" placeholder="Email">
               </div>
             </div>
             <div class="form-group">
               <label for="inputAddress">Position</label>
-              <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+              <input required ngModel name="jobPosition" type="text" class="form-control" placeholder="Job Position">
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
-                <label for="inputEmail4">Phone</label>
-                <input type="tel" class="form-control" id="inputEmail4" placeholder="Phone">
+                <label>Phone</label>
+                <input ngModel name="phone" type="tel" class="form-control" placeholder="Phone">
               </div>
               <div class="form-group col-md-6">
-                <label for="inputEmail4">Image URL</label>
-                <input type="text" class="form-control" id="inputEmail4" placeholder="Image URL">
+                <label>Image URL</label>
+                <input ngModel name="imageUrl" type="text" class="form-control" placeholder="Image URL">
               </div>
             </div>
-
-
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save</button>
-        </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button [disabled]="addEmployeeModal.invalid" type="submit" class="btn btn-success">Save</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -154,11 +153,38 @@
           </button>
         </div>
         <div class="modal-body">
-          ...
+          <form>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label>Name</label>
+                <input type="text" class="form-control" id="inputEmail4" placeholder="Name">
+              </div>
+              <div class="form-group col-md-6">
+                <label>Email</label>
+                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputAddress">Position</label>
+              <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label>Phone</label>
+                <input type="tel" class="form-control" id="inputEmail4" placeholder="Phone">
+              </div>
+              <div class="form-group col-md-6">
+                <label>Image URL</label>
+                <input type="text" class="form-control" id="inputEmail4" placeholder="Image URL">
+              </div>
+            </div>
+
+
+          </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save</button>
+          <button type="button" class="btn btn-success">Save</button>
         </div>
       </div>
     </div>
@@ -176,11 +202,11 @@
           </button>
         </div>
         <div class="modal-body">
-          ...
+          Do your realy whant to delete this employee ?
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+          <button type="button" class="btn btn-danger">Yes</button>
         </div>
       </div>
     </div>

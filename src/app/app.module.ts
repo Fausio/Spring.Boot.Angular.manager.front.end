@@ -7,6 +7,7 @@ import { EmployeeComponent } from './component/employee/employee.component';
 import { HttpClientModule } from '@angular/common/http'
 import { EmployeeService } from './service/employee.service';
 import { NavBarComponent } from './component/nav-bar/nav-bar.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { NavBarComponent } from './component/nav-bar/nav-bar.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [EmployeeService,  ],
   bootstrap: [AppComponent]
@@ -27,5 +29,5 @@ export class AppModule {
 
 
 
-  
+
 }

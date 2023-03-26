@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Employee } from 'src/app/interface/Employee';
 import { EmployeeService } from 'src/app/service/employee.service';
 
@@ -27,12 +28,16 @@ export class EmployeeComponent implements OnInit {
     )
   }
 
+  OnCreate(model: NgForm): void {
+    console.log("data", model.value);
+  }
+
   ngOnInit() {
     this.Read();
   }
 
   public openModal(model?: any, mode?: String) {
- 
+
     const mainDiv = document.getElementById("employeesRow"); // will receive the btn of the modal
 
     const btn = document.createElement('button'); // btn of the modal
