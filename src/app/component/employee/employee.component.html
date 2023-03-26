@@ -31,7 +31,8 @@
     <div class="card m-b-30">
       <div class="card-body row">
         <div class="col-6">
-          <a href=""><img src="{{employee?.imageUrl}}" alt="" class="img-fluid rounded-circle w-60"></a>
+          <a *ngIf="employee?.imageUrl" href="#"><img src="{{employee?.imageUrl}}" alt=""
+              class="img-fluid rounded-circle w-60"></a>
         </div>
         <div class="col-6 card-title align-self-center mb-0">
           <h5>{{employee?.name}}</h5>
@@ -110,7 +111,8 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button id="closeAddEmployeeModal" type="button" class="btn btn-secondary"
+              data-dismiss="modal">Close</button>
             <button [disabled]="addEmployeeModal.invalid" type="submit" class="btn btn-success">Save</button>
           </div>
         </form>

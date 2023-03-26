@@ -29,7 +29,16 @@ export class EmployeeComponent implements OnInit {
   }
 
   OnCreate(model: NgForm): void {
-    console.log("data", model.value);
+
+    this.EmployeeService.Create(model.value).subscribe(
+      (response: Employee) => {
+        this.Read();
+      }, (error: HttpErrorResponse) => {
+        alert(error.message)
+      }
+    )
+
+    document.getElementById('closeAddEmployeeModal')?.click();
   }
 
   ngOnInit() {
