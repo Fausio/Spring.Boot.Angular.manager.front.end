@@ -12,6 +12,7 @@ import { EmployeeService } from 'src/app/service/employee.service';
 export class EmployeeComponent implements OnInit {
 
   public employees: Employee[] = [];
+  public SelectedEmployee?: Employee;
 
   constructor(private EmployeeService: EmployeeService) {
 
@@ -41,6 +42,31 @@ export class EmployeeComponent implements OnInit {
     document.getElementById('closeAddEmployeeModal')?.click();
   }
 
+  OnUpdate(model: Employee): void {
+
+    this.EmployeeService.Update(model).subscribe(
+      (response: Employee) => {
+        this.Read();
+      }, (error: HttpErrorResponse) => {
+        alert(error.message)
+      }
+    )
+
+
+  }
+
+  OnDelete(modelId: any): void {
+
+    this.EmployeeService.Delete(modelId).subscribe(
+      (response: Employee) => {
+        this.Read();
+      }, (error: HttpErrorResponse) => {
+        alert(error.message)
+      }
+    )
+    document.getElementById('closeDeleteEmployeeModal')?.click();
+  }
+
   ngOnInit() {
     this.Read();
   }
@@ -53,6 +79,10 @@ export class EmployeeComponent implements OnInit {
     btn.type = 'button' // to remve submit event (to be a simple btn)
     btn.style.display = 'none'; // hide de btn
     btn.setAttribute('data-toggle', 'modal') // necessary for pop up works
+
+    if (model != null) {
+      this.SelectedEmployee = model;
+    }
 
     if (mode === 'createEmployee') {
       btn.setAttribute('data-target', '#createEmployee');

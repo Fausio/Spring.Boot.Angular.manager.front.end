@@ -154,43 +154,62 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          <form>
+        <form #updateEmployeeForm="ngForm">
+          <input type="hidden" ngModel="{{SelectedEmployee?.id}}" name="id">
+          <div class="modal-body">
+
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label>Name</label>
-                <input type="text" class="form-control" id="inputEmail4" placeholder="Name">
+                <input required ngModel="{{SelectedEmployee?.name}}" name="name" type="text" class="form-control"
+                  placeholder="Name">
               </div>
               <div class="form-group col-md-6">
                 <label>Email</label>
-                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                <input required ngModel="{{SelectedEmployee?.email}}" name="email" type="email" class="form-control"
+                  placeholder="Email">
               </div>
             </div>
             <div class="form-group">
               <label for="inputAddress">Position</label>
-              <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+              <input required ngModel="{{SelectedEmployee?.jobPosition}}" name="jobPosition" type="text"
+                class="form-control" placeholder="Job Position">
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label>Phone</label>
-                <input type="tel" class="form-control" id="inputEmail4" placeholder="Phone">
+                <input ngModel="{{SelectedEmployee?.phone}}" name="phone" type="tel" class="form-control"
+                  placeholder="Phone">
               </div>
               <div class="form-group col-md-6">
                 <label>Image URL</label>
-                <input type="text" class="form-control" id="inputEmail4" placeholder="Image URL">
+                <input ngModel="{{SelectedEmployee?.imageUrl}}" name="imageUrl" type="text" class="form-control"
+                  placeholder="Image URL">
               </div>
             </div>
-
-
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-success">Save</button>
-        </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button (click)="OnUpdate(updateEmployeeForm.value)" type="submit" class="btn btn-success">Save</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
+
+
+
+
+
+
+  <style>
+    td {
+      width: 50%;
+    }
+  </style>
+
+
+
 
   <!-- Modal Delete Employee-->
   <div class="modal fade" id="deleteEmployee" tabindex="-1" role="dialog" aria-labelledby="deleteEmployee"
@@ -204,15 +223,50 @@
           </button>
         </div>
         <div class="modal-body">
-          Do your realy whant to delete this employee ?
+          <p class="text-center"> Do your realy whant to delete this employee ?</p>
+          <hr />
+
+
+          <div class="row">
+
+            <div class="col-md-4" *ngIf="SelectedEmployee?.imageUrl">
+              <img alt="" style="width:150px;" title="" class="img-circle img-thumbnail isTooltip"
+                src="{{SelectedEmployee?.imageUrl}}" data-original-title="Usuario">
+            </div>
+
+            <div class="col-md-8">
+              <p class="text-center">Information</p>
+
+              <div class="table-responsive">
+
+                <table style="width:100%"  >
+
+                  <tr>
+
+                    <td class=" text-right"><b>Name </b></td>
+                    <td style=" border-left: 1px solid rgb(41, 41, 41);">{{SelectedEmployee?.name}}</td>
+                  </tr>
+                  <tr>
+                    <td class="text-right kistab"><b>Email </b></td>
+                    <td style=" border-left: 1px solid rgb(41, 41, 41);">{{SelectedEmployee?.email}}</td>
+                  </tr>
+                </table>
+
+              </div>
+            </div>
+          </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-          <button type="button" class="btn btn-danger">Yes</button>
+
+
+            <button type="button" id="closeDeleteEmployeeModal" class="btn btn-secondary"
+              data-dismiss="modal">No</button>
+            <button (click)="OnDelete(SelectedEmployee?.id)" type="button" class="btn btn-danger">Yes</button>
+
         </div>
       </div>
     </div>
   </div>
-
+ 
 
 </div>
